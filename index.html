@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dash Board</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <header class="header">Weather Dashboard</header>
+    <div class="search">
+
+        <!-- search bar goes here-->
+        <div class="card">
+            <form id="search" class="card-body">
+                <label class="form-label" for="username">Search for a City:</label>
+                <input name="location" id="cityLocation" type="text" autofocus="true" class="form-input" />
+                <button type="submit" class="btn">search</button>
+            </form>
+        </div>
+
+        <div>
+            <!--search history goes here-->
+            <ul id="seachHistory">
+
+            </ul>
+
+        </div>
+    </div>
+    <div id="weather-forecast" class="col-12 col-md-8 weather-display">
+        <!--weather forecast goes her-->
+
+        <div class="container forecast" id="dayForecast">
+            <!-- <div =></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div> -->
+
+        </div>
+
+
+        <div id="5-day-weather">
+            <h2 class="subtitle"><span>5 Day forecast:</span> </h2>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+
+        </div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+
+</html>

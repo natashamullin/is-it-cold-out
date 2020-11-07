@@ -1,0 +1,20 @@
+.header{
+    background-color: black;
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-body{
+    display: table-caption;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.weather-display{
+    border: black solid;
+    
+}
