@@ -7,7 +7,7 @@ var locationEl = document.querySelector("#cityLocation").value;
 // var windEl = document.querySelector(".wind")
 // var uvIndexEl = document.querySelector(".uvindex")
 // var humidityEl = document.querySelector(".humidity")
-var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + locationEl + "&appid=226cc54c5f303ead65ed71e6d190b1d6&units=imperial"
+var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + locationEl + "&appid=c8492bd5ae455a79eebdaaa49b462446&units=imperial"
 
 var forecastContainerEl = document.querySelector("#forecast-container");
 
@@ -36,8 +36,7 @@ var getWeatherForecast = function (locationEl) {
     console.log("you are here")
     fetch(apiUrl).then(function (response) {
         return response.json();
-    }
-
+    })
         .then(function (data) {
             // get rid of old data
             todayEl = document.querySelector("#dayForecast");
@@ -71,7 +70,7 @@ var getWeatherForecast = function (locationEl) {
 
             get5Day(locationEl);
             getUVIndex(data.coord.lat, data.coord.lon);
-        }));
+        });
     if (getWeatherForecast.length === 0) {
         forecastEl.textContent = "No weather information found.";
         return;
