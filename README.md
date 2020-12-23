@@ -15,9 +15,9 @@ If your README is very long, add a table of contents to make it easy for users t
 no install necessary. please click the link below to access the web. 
 
 deployed url
-https://natashamullin.github.io/weather-dashboard/.
+https://natashamullin.github.io/is-it-cold-out/.
 github link
-https://github.com/natashamullin/weather-dashboard
+https://github.com/natashamullin/is-it-cold-out
 
 ## Usage 
 
