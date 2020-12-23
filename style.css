@@ -13,16 +13,20 @@
     font-size: 20px;
     font-weight: bold;
 }
-
-.weather-display{
-    border: black solid;
-    
+.card2{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    background-color: rgb(173, 86, 173);
 }
 
-.weather-card{
-    border: black;
-}
-
-.btn{
+.search-btn{
     background-color: aquamarine;
 }

@@ -6,8 +6,6 @@ function getSearchVal() {
 
 let searchHistory = JSON.parse(localStorage.getItem('city')) || [];
 
-
-
 //search history
 document.getElementById("search").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -16,25 +14,33 @@ document.getElementById("search").addEventListener("submit", function (event) {
     var locationEl = document.getElementById("cityLocation").value.trim();
 
     localStorage.setItem('city', JSON.stringify(locationEl))
-
+    //make a list for search history
     var li = document.createElement("li");
+    li.classList.add("list-group-item", "list-group-item-action");
     li.textContent = locationEl;
+    var searchEl = document.querySelector('.history');
+    console.log(event.target)
+    searchEl.onclick = function () {
+        console.log(event.target.tagName)
+        if (event.target.tagName == "LI") {
+            getWeatherForecast(event.target.textContent)
+        }
+    }
+
 
     // retrieve from local storage and append in search history
     JSON.parse(localStorage.getItem('city'))
     document.getElementById("searchHistory").append(li);
-    console.log("search history done");
-
 
 });
 
 
 
 function getWeatherForecast(locationEl) {
-    console.log(locationEl)
+
     fetch("http://api.openweathermap.org/data/2.5/weather?q=" + locationEl + "&appid=c8492bd5ae455a79eebdaaa49b462446&units=imperial")
         .then(function (response) {
-            console.log(response)
+            console.log(response);
             return response.json();
         })
         .then(function (data) {
@@ -47,7 +53,7 @@ function getWeatherForecast(locationEl) {
             titleEl.classList.add("card-title");
             titleEl.textContent = data.name + "(" + new Date().toLocaleDateString() + ")";
             var cardEl = document.createElement("div");
-            cardEl.classList.add("card");
+            cardEl.classList.add("card", "card2");
             var windEl = document.createElement("p");
             windEl.classList.add("card-text");
             var humidEl = document.createElement("p");
@@ -84,15 +90,15 @@ function getWeatherForecast(locationEl) {
 };
 
 function get5Day(locationEl) {
-    console.log(locationEl)
+
     fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + locationEl + "&appid=c8492bd5ae455a79eebdaaa49b462446&units=imperial")
         .then(function (response) {
-            console.log(response)
+
             return response.json();
         })
         .then(function (data) {
             var forecastEl = document.querySelector("#fiveDayWeather");
-            forecastEl.innerHtml = " <h2 class=\"subtitle\" > <span>5 Day forecast:</span> </h2 > ";
+            forecastEl.innerHtml = "<h4 class=\"mt-3\">5-Day Forecast:</h4>";
             forecastRowEl = document.createElement("div");
             forecastRowEl.className = "\"row\"";
 
@@ -101,11 +107,12 @@ function get5Day(locationEl) {
                 // only look at forecasts around 3:00pm
                 if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
 
-                    // creat 5 day forecast
+                    // creat 5 day forecast card
                     var colEl = document.createElement("div");
                     colEl.classList.add("col-md-2");
                     var cardEl = document.createElement("div");
-                    cardEl.classList.add("card");
+                    //background color is built into bootstrap
+                    cardEl.classList.add("card", "text-white", "bg-info", "mb-3");
                     var windEl = document.createElement("p");
                     windEl.classList.add("card-text");
                     windEl.textContent = "Wind speed:" + data.list[i].wind.speed + "MPH";
@@ -142,21 +149,23 @@ function get5Day(locationEl) {
             }
         });
 
-    getUVIndex();
 };
 
 function getUVIndex(lat, lon) {
+    console.log("you made it to uv part")
     fetch("http://api.openweathermap.org/data/2.5/uvi?appid=c8492bd5ae455a79eebdaaa49b462446&lat=" + lat + "&lon=" + lon)
 
         .then(function (response) {
             return response.json();
         }).then(function (data) {
+            console.log(data)
             var bodyEl = document.querySelector(".card-body");
             var uvEl = document.createElement("p");
             uvEl.textContent = "UV Index: "
             var buttonEl = document.createElement("span");
             buttonEl.classList.add("btn", "btn-sm");
             buttonEl.innerHTML = data.value;
+            console.log(data.value)
 
             if (data.value < 3) {
                 buttonEl.classList.add("btn-success");
@@ -170,6 +179,7 @@ function getUVIndex(lat, lon) {
             }
         })
 }
+//this gets everything going. on submit grabs the city name and runs function
 document.querySelector("#search").addEventListener("submit", getSearchVal);
 
 
