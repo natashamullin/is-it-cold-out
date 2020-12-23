@@ -15,35 +15,29 @@
 
 <body>
     <header class="header">Weather Dashboard</header>
-    <div class="search">
+    <div class="container">
 
         <!-- search bar goes here-->
-        <div class="card">
-            <form id="search" class="card-body">
+        <div class="row">
+            <form id="search" class="col-lg-3 md-2 card-body">
                 <label class="form-label" for="username">Search for a City:</label>
                 <input class="location" id="cityLocation" type="text" autofocus="true" class="form-input" />
                 <button type="submit" class="btn" id="search">search</button>
             </form>
-        </div>
 
-        <div>
             <!--search history goes here-->
             <ul id="searchHistory">
 
             </ul>
 
-        </div>
-    </div>
-    <div id="weather-forecast" class="col-12 col-md-8 weather-display">
-        <!--weather forecast goes her-->
-
-        <div class="forecast-container" id="dayForecast">
-        </div>
 
 
-        <div id="5-day-weather" class="container flex">
-            <h2 class="subtitle"><span>5 Day forecast:</span> </h2>
+            <div class="col-lg-9 md-10 weather-display">
+                <!--weather forecast goes her-->
 
+                <div class="forecast-container mt-3" id="dayForecast"></div>
+                <div id="fiveDayWeather" class="row mt-3"> </div>
+            </div>
         </div>
     </div>
     <script src="./weather.js"></script>
