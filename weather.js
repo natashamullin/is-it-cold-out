@@ -147,6 +147,7 @@ function get5Day(locationEl) {
 
 function getUVIndex(lat, lon) {
     fetch("http://api.openweathermap.org/data/2.5/uvi?appid=c8492bd5ae455a79eebdaaa49b462446&lat=" + lat + "&lon=" + lon)
+
         .then(function (response) {
             return response.json();
         }).then(function (data) {
